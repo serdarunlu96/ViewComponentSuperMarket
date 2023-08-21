@@ -1,0 +1,57 @@
+﻿@using ANK13SuperMarket.Entities;
+@model List<Product>
+
+<h1>ÜRÜNLER</h1>
+
+@{
+    if (!ViewBag.StockDurumu)
+    {
+        <a asp-action="StoktaOlmayanlariGetir" class="btn btn-danger"> STOKTA OLMAYANLARI GETİR </a>
+    }
+    else
+    {
+        <a asp-action="Index" class="btn btn-success"> STOKTA OLANLARI GETİR </a>
+    }
+}
+
+@if (!ViewBag.StockDurumu)
+{
+    <a asp-action="StoktaOlmayanlariGetir" class="btn btn-danger"> STOKTA OLMAYANLARI GETİR </a>
+}
+else
+{
+    <a asp-action="Index" class="btn btn-success"> STOKTA OLANLARI GETİR </a>
+}
+
+
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>Ad</td>
+        <td>Fiyat</td>
+    </tr>
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @(item.IsInStock ? "Var" : "Yok")
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-route-id="@item.Id" asp-action="Guncelle">Guncelle</a>
+                    <a class="btn btn-danger" asp-route-id="@item.Id" asp-action="Sil">Sil</a>
+                </td>
+                <td>
+                    <img src="~/Images/@item.ImageName" alt="Resim yok" height="32px" width="32px">
+                </td>
+            </tr>
+        }
+    }
+</table>

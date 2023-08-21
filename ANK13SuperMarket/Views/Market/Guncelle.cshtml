@@ -1,0 +1,47 @@
+﻿@using ANK13SuperMarket.Entities;
+@model ProductViewModel
+<div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            Hata oluştu. Lütfen formu kontrol edin.
+        </div>
+    }
+
+    <form asp-controller="Market" asp-action="Guncelle" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name"> ÜRÜN ADI:   </label>
+            <input asp-for="Name" type="text" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price"> ÜRÜN FİYATI:   </label>
+            <input asp-for="Price" type="number" min="1" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="IsInStock"> STOK DURUMU:   </label>
+            <input asp-for="IsInStock" />
+
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Image"> RESIM YUKLE:   </label>
+            <input asp-for="Image" type="file" class="form-control" />
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">GÜNCELLE</button>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+﻿@using ANK13SuperMarket.Entities;
+@model List<Product>
+
+<table class="table table-dark table-hover">
+    <tr>
+        <td> Ad</td>
+        <td>Fiyat</td>
+    </tr>
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Price
+                </td>
+            </tr>
+        }
+    }
+
+</table>

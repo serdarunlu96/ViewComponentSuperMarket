@@ -1,0 +1,31 @@
+﻿@using ANK13SuperMarket.Entities;
+@model Product
+
+<h1>ÜRÜN SİLME</h1>
+
+<h2>@Model.Name isimli  @Model.Price fiyatlı ürünü silmek istediğinize emin misiniz?</h2>
+
+ <form asp-controller="Market" asp-action="Sil" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"> ÜRÜN ADI:   </label>
+        <input readonly asp-for="Name" type="text" class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"> ÜRÜN FİYATI:   </label>
+        <input readonly asp-for="Price" type="number" min="1" class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageName"> RESİM İSMİ:   </label>
+        <input readonly asp-for="ImageName" class="form-control" />
+
+    </div>
+    <button type="submit" class="btn btn-danger">SİL</button>
+
+</form>
+
+<a class="btn btn-primary" asp-action="Index">Listeye Dön</a>
